@@ -1,18 +1,15 @@
 import React from "react";
 
-
-import Contact from "./components/Contact";
 import Header from "./components/Header/Header";
-import Landing from "./components/Landing/Landing";
-import Projects from "./components/projects/Projects";
+import Footer from "./components/footer/Footer";
+import HomePage from "./components/home/HomePage";
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <Landing />
-      <Projects/>
-      <Contact />
+      <HomePage />
+      <Footer />
     </div>
   );
 }
