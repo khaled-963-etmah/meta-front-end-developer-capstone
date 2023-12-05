@@ -1,61 +1,42 @@
-
 import React from "react";
-import "./Footer.css";
+import './Footer.css';
+import {AppWrap} from '../../wrapper';
+import { images } from "../../constants";
 
-const Footer = () => {
-  return (
-    <footer className="footer">
-      <div className="footer-content">
-        <div className="footer-section">
-          <h2>Pages</h2>
-          <ul>
-            <li>
-              <a href="/">Home</a>
-            </li>
-            <li>
-              <a href="/menu">Menu</a>
-            </li>
-            <li>
-              <a href="/reservations">Reservations</a>
-            </li>
-            {/* Add more page links as needed */}
-          </ul>
-        </div>
-        <div className="footer-section">
-          <h2>Contact</h2>
-          <p>Email: info@restaurant.com</p>
-          <p>Phone: +1 (555) 123-4567</p>
-        </div>
-        <div className="footer-section">
-          <h2>Social Media</h2>
-          <ul>
-            <li>
-              <a
-                href="https://twitter.com/restaurant"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Twitter
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://facebook.com/restaurant"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Facebook
-              </a>
-            </li>
-            {/* Add more social media links as needed */}
-          </ul>
-        </div>
-        <div className="footer-section">
-          <img src="/path/to/your/logo.png" alt="Restaurant Logo" />
-        </div>
-      </div>
-    </footer>
-  );
+const doormatNavigation = ["Home", "About", "Menu", "Reservations", "Order Online", "Login"];
+const contact = ["Adress", "phone number", "email"];
+const socialMedia = ["Facebook", "Instagram", "Twitter", "Youtube"];
+
+const FooterItems = (props) => {
+    return (<div className="app__footer-items" id="footer">
+        <h1 className="app__footer-item-title">{props.sectionName}</h1>
+        <ul className="app__footer-item-names">
+            {
+                props.sectionList.map((item) => {
+                    return (<li key={item}>
+                        <a href={`#${item}`}>{item}</a>
+                    </li>);
+                })
+            }
+        </ul>
+        
+    </div>);
 };
 
-export default Footer;
+const Footer = () => {
+    return (<footer className="app__footer-section">
+            <div className="app__about-image-box img-box-1"
+                style= 
+                {
+                    {
+                        backgroundImage: `url(${images.resturant})`
+                    }
+                }
+            />
+        <FooterItems sectionName="Doormat Navigation" sectionList={doormatNavigation} />
+        <FooterItems sectionName="Contact" sectionList={contact} />
+        <FooterItems sectionName="Social Media" sectionList={socialMedia} />
+    </footer>);
+}
+
+export default AppWrap(Footer, 'footer', 'app__footer');
